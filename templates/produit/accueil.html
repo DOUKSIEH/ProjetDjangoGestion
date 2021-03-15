@@ -9,10 +9,20 @@
             <a href="" class="btn btn-primary btn-sm btn-block">Créer un client</a>
             <table class="table table-sm">
                 <tr>
-                    <th></th>
+                    <th>ID</th>
                     <th>Clients</th>
-                    <th>Commandes</th>
+                    <th>Phone</th>
+                    <th>Détails</th>
                 </tr>
+                
+                {% for client in clients %}
+                   <tr>
+                        <td> <strong style="color:blue;"><a href="{% url 'client' client.id %}">{{ client.id}}</a></strong> </td>
+                        <td>{{ client.nom}}</td>
+                        <td>{{ client.phone}}</td>
+                        <td><a class="btn btn-sm btn-outline-primary"  href="">Détails</a></td>
+                    </tr>   
+                {% endfor %}
             </table>
         </div>
     </div>
@@ -20,15 +30,30 @@
         <h5>Les 5 dernières Commandes</h5>
         <hr>
         <div class="card card-body">
-            <a href="" class="btn btn-primary btn-sm btn-block">Ajouter une commande</a>
+            <a href="{% url 'ajout_cmd' %}" class="btn btn-primary btn-sm btn-block">Ajouter une commande</a>
             <table class="table table-sm">
                 <tr>
                     <th>Produit</th>
+                    <th>Client</th>
                     <th>Date</th>
                     <th>Status</th>
                     <th>MAJ</th>
                     <th>Supprimer</th>
                 </tr>
+                {% for cmd in cmds %}
+                   <tr>
+                        <td>{{ cmd.produits}}</td>
+                        <td>{{ cmd.client}}</td>
+                        <td>{{ cmd.date_creation }}</td>
+                        
+                        <td>{{ cmd.status }}</td>  
+                       
+                        <td> <a class="btn btn-sm btn-outline-info"  href="">Mise à Jour</a> </td>
+                        <td> <a class="btn btn-sm btn-outline-danger"  href="">Supprimer</a> </td>
+                        <!-- <td>{{ cmd. }}</td>
+                        <td>{{ client.date_creation }}</td> -->
+                    </tr>   
+                {% endfor %}
             </table>
         </div>
     </div>
