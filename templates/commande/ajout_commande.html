@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% if id %}
+        <h1> Modification de la commande</h1>   
+    {% else %}
+        <h1> Ajouter vos commandes</h1> 
+    {% endif  %}
+    <form action="" method="post">
+        {% csrf_token %} 
+        {{ forms }}
+        <button class="btn btn-outline-success" type="submit">Enrégistrer</button>
+    </form> 
+{% endblock  %}

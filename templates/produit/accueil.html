@@ -20,7 +20,7 @@
                         <td> <strong style="color:blue;"><a href="{% url 'client' client.id %}">{{ client.id}}</a></strong> </td>
                         <td>{{ client.nom}}</td>
                         <td>{{ client.phone}}</td>
-                        <td><a class="btn btn-sm btn-outline-primary"  href="">Détails</a></td>
+                        <td><a class="btn btn-sm btn-outline-primary"  href="{% url 'client' client.id %}">Détails</a></td>
                     </tr>   
                 {% endfor %}
             </table>
@@ -48,8 +48,8 @@
                         
                         <td>{{ cmd.status }}</td>  
                        
-                        <td> <a class="btn btn-sm btn-outline-info"  href="">Mise à Jour</a> </td>
-                        <td> <a class="btn btn-sm btn-outline-danger"  href="">Supprimer</a> </td>
+                        <td> <a class="btn btn-sm btn-outline-info"  href="{% url 'modif_cmd' cmd.id %}">Mise à Jour</a> </td>
+                        <td> <a class="btn btn-sm btn-outline-danger" data-action="delete" data-target="#block_{{ cmd.id }}"  href="{% url 'delete_cmd' cmd.id %}">Supprimer</a> </td>
                         <!-- <td>{{ cmd. }}</td>
                         <td>{{ client.date_creation }}</td> -->
                     </tr>   
@@ -58,5 +58,10 @@
         </div>
     </div>
 
-</div>     
+</div>    
+
+ 
+
+
+
 {% endblock  %}
