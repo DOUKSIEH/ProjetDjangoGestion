@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    
+    <h1>Veuillez-vous inscrire !!!!</h1>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        {{ form.errors }}
+        <br>
+        <button class="btn btn-success mt-3" type="submit">S'inscrire !!!</button>
+    </form>
+
+
+
+</div>
+
+{% endblock %}  
