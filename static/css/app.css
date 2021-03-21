@@ -15,3 +15,19 @@ body{
 #orders-pending{
     background-color: #7CD1C0;
 }
+
+/* enable absolute positioning */
+.inner-addon { 
+    position: relative; 
+}
+
+/* style icon */
+.inner-addon .glyphicon {
+  position: absolute;
+  padding: 10px;
+  pointer-events: none;
+}
+.input-group-text {
+background-color: #563d7c;
+color: #ebeff5;
+}

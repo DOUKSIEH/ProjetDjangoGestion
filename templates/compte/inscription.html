@@ -3,15 +3,77 @@
 {% block content %}
 <div class="container">
     
-    <h1>Veuillez-vous inscrire !!!!</h1>
-    <form action="" method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        {{ form.errors }}
-        <br>
-        <button class="btn btn-success mt-3" type="submit">S'inscrire !!!</button>
-    </form>
+    <!-- <h1>Veuillez-vous inscrire !!!!</h1> -->
+    
+    <div class="row">
+        <div class="col">
+            <form action="" method="post">
+                {% csrf_token %}
+                <h2 class="alert-heading">Informations générales</h2>
+                <hr>
+                <div class="input-group mb-1">
+                   
+                    <div class="input-group-append">
+                        <span class="input-group-text"><i class="fas fa-user"></i></span> 
+                    </div>
+                    <input type="text" class="form-control" id="username" name="username" placeholder="Votre prénom...">
+                </div>
+                <p> <small id="username" class="form-text text-muted"><span> Uniquement des lettres, nombres et les caractères « @ », « . », « + », « - » et « _ ».</small>
+                </p>
+               
+                <div class="input-group mb-3">
+                   
+                    <div class="input-group-append">
+                        <span class="input-group-text"><i class="fas fa-envelope-square"></i></span> 
+                    </div>
+                    <input type="email" class="form-control" id="email"  name="email" placeholder="Votre adresse mail...">
+                </div>
+                
+                <div class="input-group mb-2">
+                   
+                    <div class="input-group-append">
+                        <span class="input-group-text"><i class="fas fa-key"></i></span> 
+                    </div>
+                    <input type="password" class="form-control" id="password1" name="password1" placeholder="Votre mot de passe...">
+                </div>
+                <ul>
+                    
+                    <li>Votre mot de passe ne peut pas trop ressembler à vos autres informations personnelles.</li>
+                    <li>Votre mot de passe doit contenir au minimum 8 caractères.</li>
+                    <li>Votre mot de passe ne peut pas être un mot de passe couramment utilisé.</li>
+                    <li>Votre mot de passe ne peut pas être entièrement numérique.</li>
+                </ul>
+               
+                <div class="input-group mb-2">
+                   
+                    <div class="input-group-append">
+                        <span class="input-group-text"><i class="fas fa-key"></i></span> 
+                    </div>
+                    <input type="password" class="form-control" id="password2" name="password2" placeholder="Confirmation de votre mot de passe...">
+                </div>
+                <p>Saisissez le même mot de passe que précédemment, pour vérification.</p>
 
+                
+                {% if form.errors %}
+                    {% for field in form %}
+                        {% for error in field.errors %}
+                            <div class="alert alert-danger">
+                                <strong>{{ error|escape }}</strong>
+                            </div>
+                        {% endfor %}
+                    {% endfor %}
+                    {% for error in form.non_field_errors %}
+                        <div class="alert alert-danger">
+                            <strong>{{ error|escape }}</strong>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+                <button class="btn btn-primary mt-3" type="submit">S'inscrire !!!</button> 
+            </form>
+        
+        </div>
+    </div>
+   
 
 
 </div>

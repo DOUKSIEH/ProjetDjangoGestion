@@ -5,6 +5,9 @@ from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
 
 # Create your views here.
+MESSAGE_TAGS = {
+    messages.constants.ERROR: 'danger'
+}
 
 def inscription(request):
     form = CreateUSer()
@@ -16,13 +19,13 @@ def inscription(request):
             form.save()
             user=form.cleaned_data.get('username')
             messages.success(request,'Votre compte (Mr/Mme {}) a bien été créé !!!'.format(user))
-            return redirect('connexion')
+            return redirect('login')
    
     return render(request,'compte/inscription.html',context={'form':form})
 
 
 def connexion(request):
-
+    # messages.add_message(request, messages.ERROR, 'ERREUR')
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
@@ -34,11 +37,11 @@ def connexion(request):
             login(request,user)
             return redirect("home")
         else:
-            messages.info(request,"Veuillez renseignée vos identifiants")
+            messages.error(request,"Veuillez renseignée vos identifiants",'danger')
         
     return render(request,'compte/connexion.html')
 
-def logout(request):
+def deconnexion(request):
     logout(request)
     return redirect('home')
      
