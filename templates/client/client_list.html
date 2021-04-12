@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col">
+        <h5>Clients</h5>
+        <hr>
+        <div class="card card-body">
+            <a href="" class="btn btn-primary btn-sm btn-block">Créer un client</a>
+            <table class="table table-sm">
+                <tr>
+                    <th>ID</th>
+                    <th>Clients</th>
+                    <th>Phone</th>
+                    <th>Détails</th>
+                </tr>
+                
+                {% for client in object_list %}
+                   <tr>
+                        <td> <strong style="color:blue;"><a href="{% url 'client_id' client.id %}">{{ client.id}}</a></strong> </td>
+                        <td>{{ client.nom}}</td>
+                        <td>{{ client.phone}}</td>
+                        <td><a class="btn btn-sm btn-outline-primary"  href="{% url 'client_id' client.id %}">Détails</a></td>
+                    </tr>   
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+
+ 
+
+
+
+{% endblock  %}
